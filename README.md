@@ -2,97 +2,240 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# Sistema de Gestión de Inventario - NestJS
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Un proyecto completo de inventario y stock construido con **NestJS**, siguiendo las mejores prácticas de arquitectura y patrones de diseño.
 
-## Description
+## 📋 Descripción
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Sistema de gestión de inventario que implementa:
+- ✅ CRUD completo de productos
+- ✅ Gestión de stock con múltiples tipos de movimientos
+- ✅ Historial de movimientos y auditoría
+- ✅ Validaciones y manejo de errores con try-catch
+- ✅ Filtros y búsquedas avanzadas
+- ✅ Estadísticas del catálogo
+- ✅ Arquitectura modular escalable
 
-## Project setup
+## 🚀 Características Principales
 
-```bash
-$ npm install
-```
+### Productos
+- Crear, leer, actualizar y eliminar productos
+- Búsqueda por nombre (búsqueda parcial)
+- Filtrado por categoría
+- Filtrado por rango de precio
+- Estadísticas de catálogo
+- Soft delete (desactivación) y hard delete
 
-## Compile and run the project
+### Stock/Inventario
+- Registrar stock inicial
+- Entradas de stock (compras)
+- Salidas de stock (ventas)
+- Devoluciones de clientes
+- Ajustes de stock
+- Historial de movimientos
+- Alertas de stock bajo
 
-```bash
-# development
-$ npm run start
+## 📦 Dependencias Recomendadas
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Run tests
+### Instalación de dependencias actuales:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm install
 ```
 
-## Deployment
+### Dependencias similares a Jetstream (Backend) para expandir el proyecto:
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+#### 1. Autenticación y Autorización
+```bash
+npm install @nestjs/passport passport passport-jwt @nestjs/jwt bcrypt
+npm install -D @types/bcrypt
+```
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+#### 2. Base de Datos (ORM)
+```bash
+# Opción 1: TypeORM (recomendado)
+npm install typeorm @nestjs/typeorm pg
+
+# Opción 2: Prisma
+npm install @prisma/client
+npm install -D prisma
+```
+
+#### 3. Validación Avanzada
+```bash
+npm install class-validator class-transformer joi
+```
+
+#### 4. Configuración
+```bash
+npm install @nestjs/config dotenv
+```
+
+#### 5. Logging
+```bash
+npm install winston
+```
+
+#### 6. Documentación API
+```bash
+npm install @nestjs/swagger swagger-ui-express
+```
+
+#### 7. Seguridad
+```bash
+npm install helmet cors @nestjs/throttler
+```
+
+#### 8. Testing
+```bash
+npm install -D jest @types/jest ts-jest supertest @types/supertest
+```
+
+#### 9. Tareas Asincrónicas
+```bash
+npm install @nestjs/schedule
+npm install @nestjs/bull bull # Para colas con Redis
+```
+
+## 📁 Estructura del Proyecto
+
+```
+src/
+├── products/
+│   ├── dto/
+│   │   ├── create-product.dto.ts
+│   │   └── update-product.dto.ts
+│   ├── entities/
+│   │   └── product.entity.ts
+│   ├── products.controller.ts
+│   ├── products.service.ts
+│   └── products.module.ts
+├── stock/
+│   ├── dto/
+│   │   ├── update-stock.dto.ts
+│   │   └── stock-response.dto.ts
+│   ├── entities/
+│   │   └── stock.entity.ts
+│   ├── stock.controller.ts
+│   ├── stock.service.ts
+│   └── stock.module.ts
+├── app.module.ts
+└── main.ts
+```
+
+## 🔧 API Endpoints
+
+### Productos
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+# Crear producto
+POST /products
+Body: {
+  "name": "Laptop",
+  "description": "Laptop de 15 pulgadas",
+  "price": 999.99,
+  "category": "electronics"
+}
+
+# Obtener todos
+GET /products
+
+# Obtener por ID
+GET /products/1
+
+# Buscar por nombre
+GET /products/search/laptop
+
+# Filtrar por categoría
+GET /products/category/electronics
+
+# Filtrar por precio
+GET /products/price-range/100/500
+
+# Estadísticas
+GET /products/admin/statistics
+
+# Actualizar
+PUT /products/1
+
+# Desactivar
+DELETE /products/1/deactivate
+
+# Eliminar
+DELETE /products/1
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### Stock
 
-## Resources
+```bash
+# Crear stock
+POST /stock
+Body: { "productId": 1, "initialQuantity": 50 }
 
-Check out a few resources that may come in handy when working with NestJS:
+# Obtener stock
+GET /stock/1
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+# Obtener todos
+GET /stock
 
-## Support
+# Productos con bajo stock
+GET /stock?type=low
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+# Entrada (compra)
+POST /stock/1/entrada
+Body: { "quantity": 20, "reason": "Compra" }
 
-## Stay in touch
+# Salida (venta)
+POST /stock/1/salida
+Body: { "quantity": 5, "reason": "Venta" }
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+# Devolución
+POST /stock/1/devolucion
+Body: { "quantity": 2, "reason": "Devolución" }
 
-## License
+# Ajuste
+PUT /stock/1
+Body: { "quantity": 45, "reason": "Ajuste" }
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+# Historial
+GET /stock/1/movements
+
+# Eliminar
+DELETE /stock/1
+```
+
+## 🎓 Conceptos Implementados
+
+| Concepto | Descripción |
+|----------|------------|
+| **IF/When** | Validaciones condicionales en servicios |
+| **Switch** | Diferentes tipos de movimientos de stock |
+| **Try-Catch** | Manejo completo de errores |
+| **Maps** | Almacenamiento de datos con `Map<K,V>` |
+| **Objetos** | Clases instanciadas (Product, Stock) |
+| **Arrays** | Colecciones de resultados |
+| **For...Of** | Iteración sobre mapas y arrays |
+| **DTOs** | Validación de entrada/salida |
+| **REST APIs** | GET, POST, PUT, DELETE completo |
+| **Decoradores** | @Controller, @Get, @Post, @Body, @Param |
+| **Inyección Dependencias** | Servicios inyectados en controladores |
+| **Excepciones** | BadRequestException, NotFoundException |
+
+## 🏃 Ejecutar el proyecto
+
+```bash
+# Desarrollo
+npm run start:dev
+
+# Producción
+npm run start:prod
+
+# Testing
+npm run test
+npm run test:cov
+```
+
+## 📝 Licencia
+
+[MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE)
